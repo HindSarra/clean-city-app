@@ -3,14 +3,19 @@ import { useState } from "react";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [dark, setDark] = useState(false);
+
+  const toggleDark = () => {
+    setDark(!dark);
+    document.documentElement.classList.toggle("dark");
+  };
 
   return (
     <nav className="fixed top-0 right-0 left-0 z-50">
-      {/* bar de navigation*/}
-      <div className=" mx-auto mt-4 w-[80%]  rounded-3xl bg-white/50 backdrop-blur-md shadow-sm ring-1 ring-black/2">
-        <div className="mx-automax-w-screen-md px-4">
+      <div className="mx-auto mt-4 w-[90%] md:w-[80%] rounded-3xl bg-white/60 dark:bg-zinc-900/70 backdrop-blur-md shadow-sm ring-1 ring-black/5 dark:ring-white/10">
+        <div className="px-4">
           <div className="flex h-16 items-center justify-between">
-            {/* Logo + nom de app web */}
+            {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
               <div className="h-9 w-9 rounded-2xl bg-primary grid place-items-center">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -28,32 +33,41 @@ export function Navbar() {
                   />
                 </svg>
               </div>
-
-              <span className="font-extrabold tracking-tight">CleanCity</span>
+              <span className="font-extrabold tracking-tight dark:text-white">
+                CleanCity
+              </span>
             </Link>
 
-            {/* Navigation desktop */}
-            <div className="hidden md:flex items-center  gap-4 rounded-2xl bg-white/70 p-1  ring-1 ring-black/5">
+            {/* Nav desktop */}
+            <div className="hidden md:flex items-center gap-4 rounded-2xl bg-white/70 dark:bg-white/10 p-1 ring-1 ring-black/5 dark:ring-white/10">
               <Link
                 to="/events"
-                className="rounded-xl px-3 py-2 text-sm font-semibold text-[rgb(var(--text-secondary))] hover:bg-black/5"
+                className="rounded-xl px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10"
               >
                 Événements
               </Link>
               <Link
                 to="/report"
-                className="rounded-xl px-3 py-2 text-sm font-semibold text-[rgb(var(--text-secondary))] hover:bg-black/5"
+                className="rounded-xl px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10"
               >
                 Signaler un déchet
               </Link>
             </div>
 
-            {/* action de menu deroulant  */}
+            {/* Actions desktop */}
             <div className="flex items-center gap-2">
-              {/* Desktop */}
+              {/* Toggle dark mode */}
+              <button
+                onClick={toggleDark}
+                aria-label="Basculer le mode sombre"
+                className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/70 dark:bg-white/10 ring-1 ring-black/10 dark:ring-white/10 text-lg"
+              >
+                {dark ? "☀️" : "🌙"}
+              </button>
+
               <Link
                 to="/signin"
-                className="hidden md:inline-flex rounded-2xl bg-white px-4 py-2 text-sm font-semibold ring-1 ring-black/10 hover:bg-gray-50"
+                className="hidden md:inline-flex rounded-2xl bg-white dark:bg-white/10 dark:text-white px-4 py-2 text-sm font-semibold ring-1 ring-black/10 dark:ring-white/10 hover:bg-gray-50 dark:hover:bg-white/20"
               >
                 Se connecter
               </Link>
@@ -61,47 +75,55 @@ export function Navbar() {
                 to="/signup"
                 className="hidden md:inline-flex rounded-2xl bg-primary px-4 py-2 text-sm font-extrabold text-black shadow-md hover:opacity-90"
               >
-                S’inscrire
+                S'inscrire
               </Link>
-              {/*  bouton menu */}
+
+              {/* Burger mobile */}
               <button
                 onClick={() => setOpen(!open)}
-                className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/70 ring-1 ring-black/10"
+                className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/70 dark:bg-white/10 ring-1 ring-black/10 dark:ring-white/10"
                 aria-label="Ouvrir le menu"
               >
                 <div className="space-y-1">
-                  <span className="block h-0.5 w-5 bg-black" />
-                  <span className="block h-0.5 w-5 bg-black" />
-                  <span className="block h-0.5 w-5 bg-black" />
+                  <span className="block h-0.5 w-5 bg-black dark:bg-white" />
+                  <span className="block h-0.5 w-5 bg-black dark:bg-white" />
+                  <span className="block h-0.5 w-5 bg-black dark:bg-white" />
                 </div>
               </button>
             </div>
           </div>
 
-          {/* Petit Ecran*/}
+          {/* Menu mobile */}
           {open && (
             <div className="md:hidden pb-4">
-              <div className="mt-3 rounded-3xl bg-white/80 p-3 ring-1 ring-black/5">
+              <div className="mt-3 rounded-3xl bg-white/80 dark:bg-zinc-800/90 p-3 ring-1 ring-black/5 dark:ring-white/10">
                 <div className="grid gap-2">
                   <Link
                     to="/events"
                     onClick={() => setOpen(false)}
-                    className="rounded-2xl px-4 py-3 text-sm font-semibold bg-white/70 hover:bg-black/5"
+                    className="rounded-2xl px-4 py-3 text-sm font-semibold bg-white/70 dark:bg-white/10 dark:text-white hover:bg-black/5"
                   >
                     Événements
                   </Link>
                   <Link
                     to="/report"
                     onClick={() => setOpen(false)}
-                    className="rounded-2xl px-4 py-3 text-sm font-semibold bg-white/70 hover:bg-black/5"
+                    className="rounded-2xl px-4 py-3 text-sm font-semibold bg-white/70 dark:bg-white/10 dark:text-white hover:bg-black/5"
                   >
                     Signaler un déchet
                   </Link>
-                  <div className="h-px w-full bg-black/10" />
+                  <div className="h-px w-full bg-black/10 dark:bg-white/10" />
+                  {/* Dark mode toggle mobile */}
+                  <button
+                    onClick={toggleDark}
+                    className="rounded-2xl px-4 py-3 text-sm font-semibold bg-white/70 dark:bg-white/10 dark:text-white text-left"
+                  >
+                    {dark ? "☀️ Mode clair" : "🌙 Mode sombre"}
+                  </button>
                   <Link
                     to="/signin"
                     onClick={() => setOpen(false)}
-                    className="rounded-2xl px-4 py-3 text-sm font-semibold bg-white ring-1 ring-black/10"
+                    className="rounded-2xl px-4 py-3 text-sm font-semibold bg-white dark:bg-white/10 dark:text-white ring-1 ring-black/10 dark:ring-white/10"
                   >
                     Se connecter
                   </Link>
@@ -110,7 +132,7 @@ export function Navbar() {
                     onClick={() => setOpen(false)}
                     className="rounded-2xl px-4 py-3 text-sm font-extrabold bg-primary text-black shadow-md hover:opacity-90"
                   >
-                    S’inscrire
+                    S'inscrire
                   </Link>
                 </div>
               </div>

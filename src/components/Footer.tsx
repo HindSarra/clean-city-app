@@ -1,58 +1,52 @@
+import { Link } from "react-router-dom";
+
 export function Footer() {
-  {
-    // Footer
-  }
   return (
-    <footer className="mt-24">
-      <div className="max-auto">
-        <div className="bg-gradient-to-b from-black/[0.04] to-black/[0.02] shadow-[0_-10px_30px_rgba(0,0,0,0.08)]">
-          <div className="mx-auto w-[80%] max-w-6xl py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            {/* texte gauche  */}
-            <div>
-              <div className="font-extrabold  tracking-tight text-gray-900">
-                CleanCity
-              </div>
-              <p className="mt-2 max-w-sm text-sm text-gray-600">
-                Plateforme citoyenne pour signaler les déchets et agir
-                localement.
-              </p>
-            </div>
-            {/* texte droite  */}
-            <div className="text-sm text-gray-700">
-              <span className="font-semibold">Contact :</span>{" "}
-              <a
-                href="mailto:contact@cleancity.fr"
-                className="underline underline-offset-4 hover:text-gray-900"
-              >
-                contact@cleancity.fr
-              </a>
-            </div>
+    <footer className="border-t border-black/5 dark:border-white/10 py-8 px-6 bg-white dark:bg-zinc-900">
+      <div className="max-w-screen-md mx-auto text-center">
+        {/* Logo */}
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <div className="h-7 w-7 rounded-xl bg-primary grid place-items-center">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M20 4C13 4 6 8 6 15c0 3.5 2.5 5 6 5 7 0 8-7 8-16Z"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M6 20c1-4 5-7 10-9"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
-          <div className="pb-6 text-center text-xs text-gray-500">
-            © {new Date().getFullYear()} CleanCity
-          </div>
+          <span className="font-extrabold text-sm dark:text-white">
+            CleanCity
+          </span>
+        </div>
+
+        {/* Copyright */}
+        <p className="text-xs text-gray-400 dark:text-gray-400 mb-4">
+          © {new Date().getFullYear()} CleanCity. Tous droits réservés.
+        </p>
+
+        <div className="flex justify-center gap-6">
+          <Link
+            to="/events"
+            className="text-xs text-gray-400 dark:text-gray-300 hover:text-primary transition-colors"
+          >
+            Événements
+          </Link>
+          <Link
+            to="/report"
+            className="text-xs text-gray-400 dark:text-gray-300 hover:text-primary transition-colors"
+          >
+            Signaler un déchet
+          </Link>
         </div>
       </div>
     </footer>
   );
 }
-// import "./Footer.css";
-// import logo from "../../assets/logo-cleancity.png";
-
-// function Footer() {
-//   return (
-//     <footer className="footer">
-//       <img src={logo} alt="CleanCity logo" />
-
-//       <p>© 2024 CleanCity. Tous droits réservés.</p>
-
-//       <div className="links">
-//         <a href="#">Confidentialité</a>
-//         <a href="#">Conditions</a>
-//         <a href="#">Contact</a>
-//       </div>
-//     </footer>
-//   );
-// }
-
-// export default Footer;
