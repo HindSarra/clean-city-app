@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
+    // footer
     <footer className="border-t border-black/5 dark:border-white/10 py-8 px-6 bg-white dark:bg-zinc-900">
       <div className="max-w-screen-md mx-auto text-center">
         {/* Logo */}
