@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useThemeStore } from "../store/themStore";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const [dark, setDark] = useState(false);
-
-  const toggleDark = () => {
-    setDark(!dark);
-    document.documentElement.classList.toggle("dark");
-  };
-
+  const dark = useThemeStore((state) => state.dark);
+  const toggleDark = useThemeStore((state) => state.toggleDark);
   return (
     <nav className="fixed top-0 right-0 left-0 z-50">
       <div className="mx-auto mt-4 w-[90%] md:w-[80%] rounded-3xl bg-white/60 dark:bg-zinc-900/70 backdrop-blur-md shadow-sm ring-1 ring-black/5 dark:ring-white/10">
@@ -59,8 +55,8 @@ export function Navbar() {
               {/* Toggle dark mode */}
               <button
                 onClick={toggleDark}
-                aria-label="Basculer le mode sombre"
-                className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/70 dark:bg-white/10 ring-1 ring-black/10 dark:ring-white/10 text-lg"
+                aria-label="Mode sombre"
+                className="hidden md:inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/70 dark:bg-white/10 ring-1 ring-black/10 dark:ring-white/10 text-base hover:bg-black/5 transition-colors"
               >
                 {dark ? "☀️" : "🌙"}
               </button>
