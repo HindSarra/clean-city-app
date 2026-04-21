@@ -1,27 +1,46 @@
 @import "tailwindcss";
+
 @variant dark (&:where(.dark, .dark *));
-/* Variables */
+
 :root {
-  /* Primary */
-  --primary: 0 255 136; /* #00FF88 */
+  /* Primary - Vert Fluo */
+  --primary: 0 255 136;
   --primary-dark: 0 179 92;
   --primary-light: 51 255 159;
 
-  /* Background */
-  --background: 240 240 240;
-  --background-secondary: 235 235 235;
+  /* Couleurs de fond (Mode Clair) */
+  --bg-main: 240 240 240;
+  --bg-card: 255 255 255;
+  --text-main: 20 20 20;
+}
+
+.dark {
+  /* Couleurs de fond (Mode Sombre) */
+  --bg-main: 15 15 15;
+  --bg-card: 28 28 28;
+  --text-main: 240 240 240;
 }
 
 @layer utilities {
   .bg-primary {
     background-color: rgb(var(--primary));
   }
-
+  .text-primary {
+    color: rgb(var(--primary));
+  }
+  .bg-main {
+    background-color: rgb(var(--bg-main));
+  }
+  .bg-card {
+    background-color: rgb(var(--bg-card));
+  }
+  .text-main {
+    color: rgb(var(--text-main));
+  }
   .bg-primary-dark {
     background-color: rgb(var(--primary-dark));
   }
-
-  .text-primary {
-    color: rgb(var(--primary));
+  .bg-primary-light {
+    background-color: rgb(var(--primary-light));
   }
 }
