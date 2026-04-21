@@ -7,7 +7,7 @@ export function Navbar() {
   const dark = useThemeStore((state) => state.dark);
   const toggleDark = useThemeStore((state) => state.toggleDark);
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50">
+    <nav className="fixed top-0 right-0 w-full left-0 z-50 ">
       <div className="mx-auto mt-4 w-[90%] md:w-[80%] rounded-3xl bg-white/60 dark:bg-zinc-900/70 backdrop-blur-md shadow-sm ring-1 ring-black/5 dark:ring-white/10">
         <div className="px-4">
           <div className="flex h-16 items-center justify-between">

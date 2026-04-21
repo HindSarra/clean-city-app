@@ -8,7 +8,7 @@ export default function Home() {
       <main className="pt-24">
         <Hero />
         <CommunityImpact />
-        <Initiatives />
+        <Initiatives  />
         <JoinCommunity />
       </main>
     </div>
