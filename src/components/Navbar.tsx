@@ -46,7 +46,7 @@ export function Navbar() {
                 to="/report"
                 className="rounded-xl px-3 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10"
               >
-                Signaler un déchet
+                Signalements
               </Link>
             </div>
 
